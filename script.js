@@ -1,0 +1,2 @@
+fetchTodos();
+toggleTaskCompletion();

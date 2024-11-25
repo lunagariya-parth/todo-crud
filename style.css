@@ -1,0 +1,335 @@
+:root {
+  interpolate-size: allow-keywords;
+  --font-body: "Lato", sans-serif;
+  --font-title: "Hanken Grotesk", sans-serif;
+}
+
+:root,
+:root[data-theme="light"] {
+  --clr-primary: #ff5a60;
+  --clr-text: #111111;
+  --clr-text-title: #111111;
+  --clr-bg: #ffffff;
+  --clr-bg-secondary: #eeeeee;
+  --clr-checkbox-bg: #111111;
+  --clr-shadow: #0000001f;
+}
+
+:root[data-theme="dark"] {
+  --clr-primary: #ff5a60;
+  --clr-text: #ffffff;
+  --clr-text-title: #ffffff;
+  --clr-bg: #111111;
+  --clr-bg-secondary: #222222;
+  --clr-checkbox-bg: #555555;
+  --clr-shadow: #aaaaaa1f;
+}
+
+:root[data-theme="blue"] {
+  --clr-primary: #5c9dfe;
+  --clr-text: #111111;
+  --clr-text-title: #5c9dfe;
+  --clr-bg: #f2f6ff;
+  --clr-bg-secondary: #e8eeff;
+  --clr-checkbox-bg: #bed8ff;
+  --clr-shadow: #0000001f;
+}
+
+:root[data-theme="fuscous"] {
+  --clr-primary: #4e5851;
+  --clr-text: #4e5851;
+  --clr-text-title: #4e5851;
+  --clr-bg: #ebebe3;
+  --clr-bg-secondary: #dbddd8;
+  --clr-checkbox-bg: #9ca59d;
+  --clr-shadow: #0000001f;
+}
+
+:root[data-theme="gold"] {
+  --clr-primary: #fad7bd;
+  --clr-text: #fad7bd;
+  --clr-text-title: #fad7bd;
+  --clr-bg: #000000;
+  --clr-bg-secondary: #322b26;
+  --clr-checkbox-bg: #60310a;
+  --clr-shadow: #aaaaaa1f;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:has(:target) {
+  scroll-behavior: smooth;
+  scroll-padding-top: 3rem;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+html {
+  hanging-punctuation: first last;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeSpeed;
+  font-family: var(--font-body);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.125;
+  text-wrap: balance;
+  font-family: var(--font-title);
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+code,
+kbd,
+samp {
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
+    monospace;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 111;
+  box-shadow: var(--clr-shadow) 0px 4px 6px;
+  background-color: var(--clr-bg);
+}
+
+.header h1 {
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--clr-text-title);
+}
+
+.theme {
+  position: relative;
+}
+
+.theme select {
+  padding: 0.25rem 2rem 0.25rem 1rem;
+  border-radius: 0.25rem;
+  appearance: none;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+}
+
+.theme svg {
+  pointer-events: none;
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.main {
+  padding: 1rem 0;
+  max-height: calc(100vh - 4.5rem);
+  max-height: calc(100dvh - 4.5rem);
+  overflow: auto;
+}
+.d-none {
+  display: none !important;
+}
+.main.loading {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 4.5rem);
+  height: calc(100dvh - 4.5rem);
+}
+
+.task {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr 1.5rem;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  transition: all 300ms ease-in-out;
+  border-bottom: 1px solid var(--clr-bg-secondary);
+}
+.task-completed .title{
+  text-decoration: line-through;
+}
+
+.task--new {
+  grid-template-columns: 1fr 1.5rem;
+}
+
+.task:hover {
+  background-color: var(--clr-bg-secondary);
+}
+
+.task:has(.title:focus) {
+  background-color: var(--clr-bg-secondary);
+}
+
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: var(--clr-checkbox-bg);
+  accent-color: var(--clr-primary);
+  cursor: pointer;
+}
+
+.checkbox input {
+  height: 1.25rem;
+  width: 1.25rem;
+  appearance: none;
+}
+
+.checkbox svg {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 300ms ease-in-out;
+}
+
+.checkbox:has(input:checked) svg {
+  opacity: 1;
+}
+
+.title {
+  border: none;
+  padding: 0 0.5rem;
+  resize: none;
+  border-radius: 0.25rem;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+}
+
+.title:focus {
+  outline: 2px solid var(--clr-shadow);
+}
+
+.delete,
+.done {
+  all: unset;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.delete svg,
+.done svg {
+  pointer-events: none;
+}
+
+.loader {
+  width: 50px;
+  --b: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(#0000 10%, var(--clr-primary)) content-box;
+  -webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
+    radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation: l4 1s infinite steps(10);
+}
+
+@keyframes l4 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.notification {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  align-items: center;
+  gap: 1rem;
+  width: calc(100vw - 2rem);
+  left: 1rem;
+  bottom: -6rem;
+  padding: 1rem;
+  border: 1px solid var(--clr-primary);
+  background-color: var(--clr-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 400ms ease-in-out;
+  z-index: 111;
+}
+.notification.visible {
+  bottom: 1rem;
+}
+.notification .icon {
+  align-items: center;
+}
+
+.notification .icon--error {
+  display: none;
+}
+
+.notification .message {
+  color: var(--clr-primary);
+}

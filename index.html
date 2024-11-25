@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO crud</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>tasked</h1>
+        <div class="theme">
+            <select id="theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="blue">Blue</option>
+                <option value="fuscous">Fuscous</option>
+                <option value="gold">Gold</option>
+            </select>
+            <svg fill="var(--clr-text)" height="12" width="12" version="1.1" id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 407.437 407.437" xml:space="preserve">
+                <polygon
+                    points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+            </svg>
+        </div>
+    </header>
+    <main class="main loading" id="loading">
+        <div class="loader"></div>
+    </main>
+    <main class="main" id="main">
+        <!-- === === === === New task === === === === -->
+        <div class="task" id="newTask">
+            <div class="checkbox">
+                <input type="checkbox" name="complete" id="newTodoCheckbox" />
+                <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <textarea class="title title--new" rows="1" type="text" autocomplete="off" autocorrect="off"
+                autocapitalize="off" spellcheck="false" placeholder="Add new task" id="newTodoTextarea"></textarea>
+            <button class="done" id="newTodoAdd">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="var(--clr-primary)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+        <!-- === === === === New task === === === === -->
+        <!-- === === === === Task list === === === === -->
+        <div class="list" id="list">
+            <!-- === === === === Task === === === === -->
+
+            <!-- === === === === Task === === === === -->
+        </div>
+        <!-- === === === === Task list === === === === -->
+    </main>
+    <!-- === === === === Notification === === === === -->
+    <div class="notification" id="notification">
+        <div class="icon icon--success" id="successIcon">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="var(--clr-primary)" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </div>
+        <div class="icon icon--error" id="errorIcon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="var(--clr-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <p class="message" id="notificationMessage"></p>
+    </div>
+    <script src="./theme.js"></script>
+    <script src="./loading.js"></script>
+    <script src="./notification.js"></script>
+    <script src="./crud.js"></script>
+    <script src="./renderTodo.js"></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

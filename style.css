@@ -205,7 +205,7 @@ samp {
   transition: all 300ms ease-in-out;
   border-bottom: 1px solid var(--clr-bg-secondary);
 }
-.task-completed .title{
+.task-completed .title {
   text-decoration: line-through;
 }
 
@@ -250,7 +250,14 @@ samp {
   transform: translate(-50%, -50%);
   transition: all 300ms ease-in-out;
 }
-
+input:disabled,
+textarea:disabled {
+  background-color: #f0f0f0;
+  color: #a0a0a0;
+  border: 1px solid #d0d0d0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
 .checkbox:has(input:checked) svg {
   opacity: 1;
 }

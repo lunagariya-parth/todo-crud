@@ -37,7 +37,7 @@ function renderTodos(todos, action = "full-refresh", updatedTodo = null) {
     });
   } else if (action === "add") {
     const todoItem = createTodoElement(updatedTodo);
-    listContainer.appendChild(todoItem);
+    listContainer.insertBefore(todoItem, listContainer.firstChild);
   }
 }
 

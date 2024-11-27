@@ -76,7 +76,6 @@ listContainer.addEventListener(
       if (updatedText) {
         try {
           const data = await editTodo(todoId, updatedText, isCompleted);
-          showNotification(data.message, "success");
         } catch (error) {
           showNotification(error.message, "error");
           event.target.value = todoElement.querySelector(".title").textContent;

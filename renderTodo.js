@@ -66,7 +66,7 @@ listContainer.addEventListener("click", (event) => {
 
 listContainer.addEventListener(
   "blur",
-  (event) => {
+  async (event) => {
     if (event.target.classList.contains("title")) {
       const todoElement = event.target.closest(".task");
       const todoId = todoElement.dataset.id;
@@ -74,9 +74,16 @@ listContainer.addEventListener(
       const isCompleted = todoElement.querySelector(".todo-checkbox").checked;
 
       if (updatedText) {
-        editTodo(todoId, updatedText, isCompleted);
+        try {
+          const data = await editTodo(todoId, updatedText, isCompleted);
+          showNotification(data.message, "success");
+        } catch (error) {
+          showNotification(error.message, "error");
+          event.target.value = todoElement.querySelector(".title").textContent;
+        }
       } else {
-        console.log("Task text cannot be empty.");
+        event.target.value = todoElement.querySelector(".title").textContent;
+        showNotification("Task text cannot be empty.", "error");
       }
     }
   },

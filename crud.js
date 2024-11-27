@@ -74,18 +74,19 @@ async function addTodo(newTodo, isCompleted) {
 async function editTodo(todoId, updatedText, isCompleted) {
   const taskElement = document.querySelector(`.task[data-id="${todoId}"]`);
   toggleInputsState(taskElement, true);
-
   try {
-    await fetch(API_ENDPOINTS.UPDATE(todoId), {
+    const res = await fetch(API_ENDPOINTS.UPDATE(todoId), {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ todo: updatedText, completed: isCompleted }),
     });
-
+    const data = await res.json();
+    if (data.message) {
+      throw new Error(" Task ID not Found");
+    }
     showNotification("Task updated successfully!", "success");
   } catch (error) {
-    showNotification("Error updating task", "error");
-    console.error(error);
+    throw new Error(error.message);
   } finally {
     toggleInputsState(taskElement, false);
   }
@@ -97,12 +98,10 @@ async function deleteTodo(todoId) {
 
   try {
     await fetch(API_ENDPOINTS.DELETE(todoId), { method: "DELETE" });
-    taskElement.remove(); 
+    taskElement.remove();
     showNotification("Task deleted successfully!", "success");
   } catch (error) {
     showNotification("Error deleting task", "error");
     console.error(error);
-  } 
+  }
 }
-
-

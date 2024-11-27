@@ -105,15 +105,4 @@ async function deleteTodo(todoId) {
   } 
 }
 
-// Event listener for checkbox changes
-listContainer.addEventListener("change", (event) => {
-  if (event.target.classList.contains("todo-checkbox")) {
-    const taskElement = event.target.closest(".task");
-    const todoId = taskElement.dataset.id;
-    const isCompleted = event.target.checked;
-    const updatedText = taskElement.querySelector(".title").value;
 
-    taskElement.classList.toggle("task-completed", isCompleted);
-    editTodo(todoId, updatedText, isCompleted);
-  }
-});

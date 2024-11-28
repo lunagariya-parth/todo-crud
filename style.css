@@ -269,6 +269,8 @@ textarea:disabled {
   border-radius: 0.25rem;
   background-color: var(--clr-bg);
   color: var(--clr-text);
+  field-sizing: content;
+  max-height: 150px;
 }
 
 .title:focus {
